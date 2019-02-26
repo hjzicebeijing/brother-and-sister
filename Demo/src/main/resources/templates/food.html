@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>狗狗外卖 - 用户中心</title>
+    <meta name="keywords" content="狗狗外卖"/>
+    <meta name="description" content="dogdog"/>
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link href="../static/demo/css/demo.css" th:href="@{/demo/css/demo.css}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../static/dog.ico" th:href="@{/dog.ico}"/>
+    <style type="text/css">label.error { position:inherit;  }</style>
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+</head>
+<body class="gray-bg">
+<div class="wrapper">
+    <div class="black-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <ul class="nav navbar-top-links navbar-left welcome-message">
+                        <li>
+                            <img th:src="@{/dog.ico}" th:height="60px"/>
+                        </li>
+                        <li>
+                            <span style="color:#0d8ddb" ><h2>欢迎来到狗狗外卖系统</h2></span>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-top-links navbar-right welcome-message">
+                    <li><a th:href="@{logout}"><i class="fa fa-sign-out"></i>退出</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row" >
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    支付宝支付流程
+                </div>
+                <div class="ibox-content">
+                    <ol><h3> 支付APP</h3>
+                        <li>
+                            目前采用支付宝沙箱钱包进行支付，沙箱钱包只支持Android系统，扫描二维码进行下载
+                        </li>
+                        <li>
+                            <img width="200px" src="../static/img/AlipayDev.png" th:src="@{/img/AlipayDev.png}"/>
+                        </li>
+                    </ol>
+                    <ol><h3>商家账号信息</h3>
+                        <li>
+                            商家账号: hrysag5875@sandbox.com
+                        </li>
+                        <li>
+                            商户UID : 2088102176835528
+                        </li>
+                        <li>
+                            登录密码: 111111
+                        </li>
+                    </ol>
+                    <ol><h3>买家账号信息</h3>
+                        <li>
+                            买家账号: lvjtwl0600@sandbox.com
+                        </li>
+                        <li>
+                            登录密码: 111111
+                        </li>
+                        <li>
+                            支付密码: 111111
+                        </li>
+                        <li>
+                            用户名称: 沙箱环境
+                        </li>
+                        <li>
+                            证件类型: 身份证(IDENTITY_CARD)
+                        </li>
+                        <li>
+                            证件号码: 973415196708169509
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7 seller-bk" >
+            <div class="row" >
+                <div class="col-sm-3" th:each="food:${Foods}">
+                    <h4><span  th:text="${food.getFoodName()}">112</span></h4>
+                    <ol>
+                        <img class="food_img" src="../static/testjpg.jpg" th:src="${food.getFoodImg()}"/>
+                        <li>
+                            <img  class="food_opt_img food_left" src="../static/img/money.png" th:src="@{/img/money.png}"/>
+                            <span  class="food_opt_text food_right" th:text="${food.getFoodPrice()}">12.3</span>
+                            <img   class="food_opt_img addButton" src="../static/img/addButton.jpg" th:src="@{/img/addButton.jpg}"/>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    本项目支持功能：
+                </div>
+                <div class="ibox-content">
+                    <ul>
+                        <h3>用户登录界面</h3>
+                        <li>验证码功能过滤恶意访问</li>
+                        <li>提供用户注册链接</li>
+                    </ul>
+                    <ul>
+                        <h3>用户注册界面</h3>
+                        <li>实时检查用户名、电话、邮箱是否重复</li>
+                        <li>用户头像上传</li>
+                    </ul>
+                    <ul>
+                        <h3>主界面</h3>
+                        <li>添加商户功能，一个登录用户可以添加多个商户</li>
+                        <li>添加食物功能，一个商户可以添加多个食物</li>
+                    </ul>
+                    <ul>
+                        <h3>支付界面</h3>
+                        <li>购物车功能，显示用户订单</li>
+                        <li>支付宝支付功能</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="order" >
+            <div id="total">
+                <span class="total_main">总价</span>
+                <span class="total_amount">0</span>
+            </div>
+            <div  id="buyCar" class="buyOrder">
+                <div id="car" class="car" >
+                    <img src="../static/img/buyCar.jpg" class="buyCar" th:src="@{/img/buyCar.jpg}"/>
+                </div>
+                <div id="pay" class="buy">
+                    点击购买
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="light" class="white_content">
+    <div id="qrCodeImage"></div>
+    <span >打开支付宝，扫一扫</span>
+    <button id="close">点击关闭</button></div>
+<div id="fade" class="black_overlay"></div>
+<script th:inline="javascript">var sellerName=[[${sellerName}]]</script>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/jquery.qrcode.min.js" th:src="@{/js/jquery.qrcode.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script src="../static/ajax/libs/iCheck/icheck.min.js" th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+<script src="../static/demo/js/ry-ui.min.js" th:src="@{/demo/js/ry-ui.min.js?v=2.3.0}"></script>
+<script src="../static/demo/food.js" th:src="@{/demo/food.js}"></script>
+</body>
+</html>

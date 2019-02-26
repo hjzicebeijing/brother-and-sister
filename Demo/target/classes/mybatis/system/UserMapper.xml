@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.project.system.user.mapper.UserMapper">
+    <resultMap id="UserResult" type="User">
+        <id property="userId" column="user_id"/>
+        <result property="groupType" column="group_type"/>
+        <result property="loginName" column="login_name"/>
+        <result property="userName" column="user_name"/>
+        <result property="phoneNumber" column="phonenumber"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+        <result property="status" column="status"/>
+        <result property="refuseDes" column="refuse_des"/>
+        <result property="headPortrait" column="headportrait"/>
+    </resultMap>
+    <sql id="selectUserVia">
+        select user_id,login_name,user_name,password,phonenumber,email,headportrait from sys_user
+    </sql>
+    <select id="selectUserByLoginName" parameterType="String" resultMap="UserResult">
+      <include refid="selectUserVia"/>
+        where login_name=#{loginName}
+    </select>
+    <select id="selectUserByPhoneNumber" parameterType="String" resultMap="UserResult">
+        <include refid="selectUserVia"/>
+        where phonenumber=#{phoneNumber}
+    </select>
+    <select id="selectUserByEmail" parameterType="String" resultMap="UserResult">
+        <include refid="selectUserVia"/>
+        where email=#{email}
+    </select>
+    <select id="selectUserById" parameterType="int" resultMap="UserResult">
+        <include refid="selectUserVia"/>
+        where user_id=#{userId}
+    </select>
+    <select id="checkLoginNameUnique" parameterType="String" resultType="int">
+        select count(1) from sys_user where login_name=#{loginName}
+    </select>
+    <select id="checkPhoneNumberUnique" parameterType="String" resultType="int">
+        select count(1) from sys_user where phonenumber=#{phoneNumber}
+    </select>
+    <select id="checkEmailUnique" parameterType="String" resultType="int">
+        select count(1) from sys_user where email=#{email}
+    </select>
+    <select id="checkUserNameUnique" parameterType="String" resultType="int">
+        select count(1) from sys_user where user_name=#{userName}
+    </select>
+    <insert id="insertUser" parameterType="User">
+        insert into sys_user(
+          <if test="loginName!=null and loginName!=''">login_name,</if>
+          <if test="userName!=null and userName!=''">user_name,</if>
+          <if test="phoneNumber!=null and phoneNumber!=''">phonenumber,</if>
+          <if test="email!=null and email!=''">email,</if>
+          <if test="password!=null and password!=''">password,</if>
+          <if test="salt!=null and salt!=''">salt,</if>
+          <if test="status!=null and status!=''">status,</if>
+          <if test="refuseDes!=null and refuseDes!=''">refuse_des,</if>
+          <if test="headPortrait!=null and headPortrait!=''">headportrait</if>
+        )values(
+        <if test="loginName!=null and loginName!=''">#{loginName},</if>
+        <if test="userName!=null and userName!=''">#{userName},</if>
+        <if test="phoneNumber!=null and phoneNumber!=''">#{phoneNumber},</if>
+        <if test="email!=null and email!=''">#{email},</if>
+        <if test="password!=null and password!=''">#{password},</if>
+        <if test="salt!=null and salt!=''">#{salt},</if>
+        <if test="status!=null and status!=''">#{status},</if>
+        <if test="refuseDes!=null and refuseDes!=''">#{refuseDes},</if>
+        <if test="headPortrait!=null and headPortrait!=''">#{headPortrait}</if>
+        )
+    </insert>
+</mapper>

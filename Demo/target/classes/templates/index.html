@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>狗狗外卖 - 用户中心</title>
+    <meta name="keywords" content="狗狗外卖"/>
+    <meta name="description" content="dogdog"/>
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link href="../static/demo/css/demo.css" th:href="@{/demo/css/demo.css}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../static/dog.ico" th:href="@{dog.ico}"/>
+    <style type="text/css">label.error { position:inherit;  }</style>
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+</head>
+<body class="gray-bg">
+    <div class="wrapper">
+        <div class="black-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-top-links navbar-left welcome-message">
+                            <li>
+                                <img th:src="@{/dog.ico}" height="60px"/>
+                            </li>
+                            <li>
+                                <span style="color:#0d8ddb"><h2>欢迎来到狗狗外卖系统</h2></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right welcome-message">
+                        <li>
+                            <span>欢迎您：</span>
+                            <span th:text="${userName}"></span>
+                        </li>
+                        <img class="head-img" th:src="${headPortrait}"/>
+                        <li><a href="/seller/add" ><i class="fa fa-arrows-alt"></i>添加商户</a></li>
+                        <li><a href="/food/add" ><i class="fa fa-arrows-alt"></i>添加食物</a></li>
+                        <li><a th:href="@{logout}"><i class="fa fa-sign-out"></i>退出</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content">
+        <div class="row" >
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        项目作者介绍
+                    </div>
+                    <div class="ibox-content">
+                        贺建章
+                        <ol>
+                            <h4>教育背景：</h4>
+                            <li>
+                                2010-2014 本科就读于北京交通大学 通信工程专业
+                            </li>
+                            <li>
+                                2014-2017 研究生就读于北京交通大学 通信工程专业
+                            </li>
+                        </ol>
+                        <ol>
+                            <h4>荣获奖励：</h4>
+                            <li>
+                                北京市优秀毕业生
+                            </li>
+                            <li>
+                                硕士国家奖学金
+                            </li>
+                            <li>
+                                北京交通大学思诺奖学金
+                            </li>
+                        </ol>
+                        <ol>
+                            <h4>学术成果：</h4>
+                            <li>
+                                "Incentive Mechanism and Content Provider Selection for Device-to-device-based Content Sharing" in
+                                "IEEE Transactions on Vehicular Technology" (第一作者，SCI二区)
+                            </li>
+                            <li>
+                                发表《面向智能电网的配电变压器重过载影响因素分析》于《电网技术》（第一作者，EI核心期刊）
+                            </li>
+                            <li>
+                                发表《基于随机森林理论的配电变压器重过载预测》于《电网技术》（第一作者，EI核心期刊）
+                            </li>
+                            <li>
+                                "Incentive and Selection for D2D content sharing： A Comprehensive Scoring Mechanism" in
+                                "The 13th IEEE International Conference on Signal Processing (ICSP2016)" (第一作者，EI检索会议)
+                            </li>
+                        </ol>
+                        <ol>
+                            <h4>工作经历：</h4>
+                            <li>
+                                2017.5—至今 中国联通网络技术研究院 软件开发工程师
+                            </li>
+                        </ol>
+                        <ol>
+                            <h4>项目经历：</h4>
+                            <li>
+                                2015.5—2016。6 参与国家电网《电力大数据关键技术研究》 负责配电变压器重过载预测的开发 项目使用R语言
+                                使用apriori算法进行关联规则分析，决策树算法进行预测
+                            </li>
+                            <li>
+                                2017.9—2018.6 参与中国联通机顶盒质量监控项目的开发，负责数据库数据展示，界面展现和后期运维
+                            </li>
+                            <li>
+                                2018.6—至今 借调中国联通集团市场部，参与爱奇艺电视果营销套餐，百度家庭互联网公司建设
+                            </li>
+                        </ol>
+                        <ol>
+                            <h4>我的联系方式：</h4>
+                            <li>
+                                电话：15201315280
+                            </li>
+                            <li>
+                                微信二维码：
+                            </li>
+                            <li>
+                                <img width="200px" src="../static/wechat.jpg" th:src="@{/wechat.jpg}"/>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7 seller-bk" th:if="${not #lists.isEmpty(Sellers)}">
+                <div class="row seller-nav-bk"  style="margin-bottom:5%" th:if="${not #lists.isEmpty(SellerTypes)}">
+                    <div class="seller-type">
+                        <div class="seller-type-name">
+                            <div class="col-sm-1" th:each="sellerType:${SellerTypes}">
+                                <span th:text="${sellerType.getSellerTypeName()}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-sm-3" th:each="seller:${Sellers}">
+                        <h4><span  th:text="${seller.getSellerName()}"></span></h4>
+                        <ol>
+                            <img class="seller_img" src="../static/testjpg.jpg" th:src="${seller.getSellerFlag()}"/>
+                            <li>
+                                <span  class="food_opt_text food_right" >商家地址：</span>
+                                <span  class="food_opt_text food_right" th:text="${seller.getSellerAddr()}">12.3</span>
+                            </li>
+                            <li>
+                                <span  class="food_opt_text food_right" >商家评分：</span>
+                                <span  class="food_opt_text food_right" th:text="${seller.getSellerScore()}">12.3</span>
+                            </li>
+                            <li>
+                                <span  class="food_opt_text food_right" >联系方式：</span>
+                                <span  class="food_opt_text food_right" th:text="${seller.getSellerConnect()}">12.3</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        技术选型：
+                    </div>
+                    <div class="ibox-content">
+                        <ol>
+                            <li>核心框架：Spring Boot</li>
+                            <li>安全框架：Apache Shiro</li>
+                            <li>模板引擎：Thymeleaf</li>
+                            <li>持久层框架：MyBatis</li>
+                            <li>缓存数据库:Redis</li>
+                            <li>数据库连接池：Druid</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:inline="javascript"></script>
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../static/demo/index.js" th:src="@{/demo/index.js}"></script>
+</body>
+</html>

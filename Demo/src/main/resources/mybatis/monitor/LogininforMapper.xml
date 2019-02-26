@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.project.monitor.logininfor.mapper.LogininforMapper">
+    <resultMap id="LogininforResult" type="Logininfor">
+        <id property="loggerId" column="logger_id"/>
+        <result property="loginName" column="login_name"/>
+        <result property="ipAddr" column="ipaddr"/>
+        <result property="browser" column="browser"/>
+        <result property="os" column="os"/>
+        <result property="loginResult" column="login_result"/>
+        <result property="message" column="login_message"/>
+        <result property="date" column="login_time"/>
+    </resultMap>
+    <insert id="insertLogininforLogger" parameterType="Logininfor">
+        insert into sys_logininfor (login_name,ipaddr,browser,os,login_result,login_message) values(#{loginName},#{ipAddr},
+        #{browser},#{os},#{loginResult},#{message})
+    </insert>
+</mapper>

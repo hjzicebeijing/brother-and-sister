@@ -1,0 +1,134 @@
+server:
+  #服务端口
+  port: 80
+  servlet:
+    # 项目contextPath
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+#日志配置
+logging:
+  level:
+    demo: warn
+    org.springframework.redis: warn
+    org.spring.springboot.dao: warn
+#用户配置
+user:
+  password:
+    #密码错误{maxRetryCount}次锁定10分钟
+    maxRetryCount: 5
+#文件存储配置
+file:
+  #Windows绝对路径,上传文件路径
+  #商户文件路径
+  uploadPathOfSeller: /demo/seller/
+  #食物文件路径
+  uploadPathOfFood: /demo/food/
+  #用户文件路径
+  uploadPathOfUser: /demo//user/
+  #虚拟路径，访问路径
+  #商户文件访问路径
+  accessPathOfSeller: /seller/
+  #食物文件访问路径
+  accessPathOfUser: /user/
+  #用户文件访问路径
+  accessPathOfFood: /food/
+#Spring配置
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 8
+      max-idle: 8
+      min-idle: 0
+      max-wait: -1
+    timeout: 1000
+  messages:
+    #国际化资源文件路径
+    basename: i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: druid
+  #文件上传
+  servlet:
+    multipart:
+      max-file-size:  30MB
+      max-request-size:  30MB
+  devtools:
+    restart:
+      #热部署开关
+      enabled: true
+# MyBatis
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: demo.project
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:mybatis/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+# PageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+# Shiro
+shiro:
+  user:
+    # 登录地址
+    loginUrl: /login
+    # 权限认证失败地址
+    unauthorizedUrl: /unauth
+    # 首页地址
+    indexUrl: /index
+    # 验证码开关
+    captchaEnabled: true
+    # 验证码类型 math 数组计算 char 字符
+    captchaType: math
+  cookie:
+    # 设置Cookie的域名 默认空，即当前访问的域名
+    domain:
+    # 设置cookie的有效访问路径
+    path: /
+    # 设置HttpOnly属性
+    httpOnly: true
+    # 设置Cookie的过期时间，天为单位
+    maxAge: 30
+  session:
+    # Session超时时间（默认30分钟）
+    expireTime: 30
+    # 同步session到数据库的周期（默认1分钟）
+    dbSyncPeriod: 1
+    # 相隔多久检查一次session的有效性，默认就是10分钟
+    validationInterval: 10
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+pay:
+  #支付宝网关，沙箱环境，正式版本请更换
+  url: https://openapi.alipaydev.com/gateway.do
+  app_id: 2016092200573808
+  app_private_key: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCpRxHnL+D59AjdnxsB15je8zTZV1w4fFIjGmFjkKhcJWWo84jQbef37lju8N67HpRpCh0xGHHuC7sJlwzhlgh4xxzaX5bDHUSIg8vW/52txIGYSJkh7EiVjLOcnhiSZKmsn7JtAo3DZPyLUDsZcBPN055h/QFjf1zdH5iaWR4OrTLe159/f3wC/ExxaUhwUp1+PtgZck4Rz2YvYiB54VQ5E6rzEx1rsYx2kI33pS5XmoLYRPq6xahfLyQjwgxUp9Jy/4UiTqyiCB3+2jEvkTMBck2weW2/8VysaCqwnRqXfxnmKLhwTp9YBzGCBo5bwHIkMDqppCggmHQSZD8TyqSlAgMBAAECggEAdBG4M+Y/hAQRpCy5bvzu5Eis/y4InO6Zv1oSVxvUZUJ7P2qlcA08VmNG9aeRgYqJRrDZrVVOoWPHvt6kxXWDn5UfspiCnozN9jEwrt4ctw6bsdhtr7X9WxXb/lLlFFQTh7sEs/xhSg5PoBLGQz33RlWJLzU1I40sFq7Yi1T56CM6gw86RbZt4p7MCcQZpxlAL6q1QaSFwyVtTc9sLPA3WE2eKtiUO1EUFXDKLZsjcoyyIREO6LTPOOiEeFB9EPkfSYWKFDQZoN0PT2O4Iy7Nj6VmcGpO3O3wbJx6cXZPBP3ZFDd1EtNtXi+ECo8Idl+pEtAZqq8QoGoEVo3OcrWS7QKBgQDaf6fHLRyDjgx65C8G6w5Clk8AtXc5YSy4sg7z5JI+FsVG03dgUn+WVjj0f/NfcneIeZITqAaMvefC6lxUIQKxzdZYmLzD86XOwrBnST17khdne0pxfFXVqcb1SqHbPJtlGJMvUd0BYsMfPDNXxn37KTAOAZiS+b2Yc4pfLjxrDwKBgQDGVMBw4OU27DDpso15LYTNVuJIhFK5isL58iEX1UyxMapI2CAjmNTmn0lAUh3B/Nz+bWyWHFjrAM+fs+LH17sSAw67PVbVWKL3ypFNqzMZBoEnOK7PYIx5aKH0XnaGXtUcSUbvMCKrNJqzyjJsvxusGd2Ehq4kEPg3GmvCiDlFCwKBgAFCnzsc3X88wIGs80B89pYXu9jrMwbXsqRWEpQBi35kLzsbWSLrFuVNFgMDAepZBKt62AbY/0Csj7umEmZB0nwoDcZxCxWuQBSTNuVBnOMrkor8QQ+qgew7kHQ1u/1Buju5CpBJTpcFdM6nUDx/XpamRCqwg6rFWfyZHgEyiRKtAoGAT+rGwLVep4r1CrZQG4wj/zoLZH0teGZZuq2+eAQTKzOAEmpESRPEdkmpEqoEI67ovf0JzFMP4WIqR4gM0co0L0XcIcbNvppA0OhnNIzPwj3EvTEx/45ADIwE9ps511tPNF6ynp8e2S4RSHEpcHhxhh/GCyjZ8t6DpnCXC4Qoz5ECgYBLCBLW6K1YgMR34/0KFJuL33nrXZRy09c3YQPL0ZOROj730IwP4lQ4hgcBmKlC/0Uys4aXCJmweqP3caeNLZqgKCI7S0mZJrfBh9bpfQhuB1HkCnu189Z98Sca0zrD1j4ecOBkKmUb+wlE617C4BZKVI9xsOCWyj5rKLNqZx2b1w==
+  charset: UTF-8
+  alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy5zGy++m9/tf3fzHNMYUs0NZNetZX2xy7CegabwiO78LtB4ALjTfOUL1pgDac5Utztv0ALloDPy3Ln5R2IaI15isGRJDLQXrkMMDR2HYSgfjfoT1RQRas7R7fenws2VNa8Y8NDgC75J6uQJG7DS/XSEOcnqWLlYIGdojS94oWn5sD1bDoscAgF12QK299rss8y0HA8Tq7wYnhiR6dQ0j66BNiBa9R8qnmG1CcRBbkxTdloGAzuac5PH1bXb4qknA8gLIQoGzG6Sp2shNkuiKPkNExi8J8Ac5g99aG8qzcp9x0yH0FzoxNZGYphBLw09HAGkcH3yt7yCq2UDhe8KvnQIDAQAB
+  sign_type: RSA2
+  format: json

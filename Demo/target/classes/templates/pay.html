@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>订单支付</title>
+    <link rel="shortcut icon" href="../static/dog.ico" th:href="@{dog.ico}"/>
+</head>
+<body th:align="center">
+<span >打开支付宝，扫一扫</span>
+<div id="code"></div>
+<script th:inline="javascript">var qrCodeUrl=[[${qrCodeUrl}]]; var payId=[[${payId}]]</script>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/jquery.qrcode.min.js" th:src="@{/js/jquery.qrcode.min.js}"></script>
+<script src="../static/demo/pay.js" th:src="@{/demo/pay.js}"></script>
+<script src="http://tajs.qq.com/stats?sId=62048022"></script>
+</body>
+</html>

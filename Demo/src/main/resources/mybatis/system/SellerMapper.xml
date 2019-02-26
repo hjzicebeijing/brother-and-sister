@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.project.system.seller.mapper.SellerMapper">
+    <resultMap id="SellerResult" type="Seller">
+        <id property="sellerId" column="seller_id"/>
+        <result property="sellerName" column="seller_name"/>
+        <result property="loginName" column="login_name"/>
+        <result property="sellerAddr" column="seller_addr"/>
+        <result property="sellerConnect" column="seller_connect"/>
+        <result property="sellerDesc" column="seller_desc"/>
+        <result property="sellerStatus" column="seller_status"/>
+        <result property="sellerFlag" column="seller_flag"/>
+        <result property="sellerScore" column="seller_score"/>
+        <result property="sellerTypeName" column="seller_typename"/>
+    </resultMap>
+    <insert id="insertSeller" parameterType="Seller">
+        insert into sys_seller(
+        <if test="sellerName!=null and sellerName!=''">seller_name,</if>
+        <if test="loginName!=null and loginName!=''">login_name,</if>
+        <if test="sellerAddr!=null and sellerAddr!=''">seller_addr,</if>
+        <if test="sellerConnect!=null and sellerConnect!=''">seller_connect,</if>
+        <if test="sellerDesc!=null and sellerDesc!=''">seller_desc,</if>
+        <if test="sellerStatus!=null and sellerStatus!=''">seller_status,</if>
+        <if test="sellerFlag!=null and sellerFlag!=''">seller_flag,</if>
+        <if test="sellerScore!=null and sellerScore!=''">seller_score,</if>
+        <if test="sellerTypeName!=null and sellerTypeName!=''">seller_typename</if>
+        )values(
+        <if test="sellerName!=null and sellerName!=''">#{sellerName},</if>
+        <if test="loginName!=null and loginName!=''">#{loginName},</if>
+        <if test="sellerAddr!=null and sellerAddr!=''">#{sellerAddr},</if>
+        <if test="sellerConnect!=null and sellerConnect!=''">#{sellerConnect},</if>
+        <if test="sellerDesc!=null and sellerDesc!=''">#{sellerDesc},</if>
+        <if test="sellerStatus!=null and sellerStatus!=''">#{sellerStatus},</if>
+        <if test="sellerFlag!=null and sellerFlag!=''">#{sellerFlag},</if>
+        <if test="sellerScore!=null and sellerScore!=''">#{sellerScore},</if>
+        <if test="sellerTypeName!=null and sellerTypeName!=''">#{sellerTypeName}</if>
+        )
+    </insert>
+    <sql id="selectSeller">
+        select seller_name,seller_addr,seller_connect,seller_desc,seller_status,seller_flag,seller_score,seller_typename from sys_seller
+    </sql>
+    <select id="getSellerBySellerName" parameterType="String" resultMap="SellerResult">
+        <include refid="selectSeller"/>
+        where seller_name=#{sellerName}
+    </select>
+    <select id="getSellerBySellerTypeName" parameterType="String" resultMap="SellerResult">
+        <include refid="selectSeller"/>
+        where seller_typename=#{sellerTypeName}
+    </select>
+    <select id="getWholeSeller" resultMap="SellerResult">
+        <include refid="selectSeller"/>
+    </select>
+    <select id="getSellersByLoginName" parameterType="String" resultMap="SellerResult">
+        <include refid="selectSeller"/>
+        where login_name=#{loginName}
+    </select>
+</mapper>

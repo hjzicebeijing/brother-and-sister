@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.project.system.seller.mapper.SellerTypeMapper">
+    <resultMap id="SellerTypeResult" type="SellerType">
+        <id property="sellerTypeId" column="sellerType_id"/>
+        <result property="sellerTypeName" column="sellerType_name"/>
+        <result property="sellerTypeScore" column="sellerType_score"/>
+    </resultMap>
+    <sql id="selectSellerTypeVia">
+        select sellerType_id,sellerType_name,sellerType_score from sys_seller_type
+    </sql>
+    <select id="getListSellerTypeOrderByScore" parameterType="int" resultMap="SellerTypeResult">
+        <include refid="selectSellerTypeVia"/>
+        order by sellerType_score desc limit #{number}
+    </select>
+    <select id="getSellerType" parameterType="String" resultMap="SellerTypeResult">
+        <include refid="selectSellerTypeVia"/>
+         where sellerType_name=#{sellerTypeName}
+    </select>
+    <select id="checkSellerTypeName" parameterType="String" resultType="int">
+        select count(1) from sys_seller_type where sellerType_name=#{sellerTypeName}
+    </select>
+    <insert id="insertSellerType" parameterType="SellerType">
+        insert into sys_seller_type(
+          <if test="sellerTypeName!=null and sellerTypeName!=''">sellerType_name,</if>
+          <if test="sellerTypeScore!=null">sellerType_score</if>
+        )values(
+          <if test="sellerTypeName!=null and sellerTypeName!=''">#{sellerTypeName},</if>
+          <if test="sellerTypeScore!=null">#{sellerTypeScore}</if>
+        )
+    </insert>
+    <update id="updateSellerType" parameterType="String">
+          update sys_seller_type set sellerType_score=sellerType_score+0.1 where sellerType_name=#{sellerTypeName}
+    </update>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.project.system.food.mapper.FoodMapper">
+    <resultMap id="FoodResult" type="Food">
+        <id property="foodId" column="food_id"/>
+        <result property="sellerName" column="seller_name"/>
+        <result property="foodImg" column="food_img"/>
+        <result property="foodName" column="food_name"/>
+        <result property="foodPrice" column="food_price"/>
+        <result property="foodStatus" column="food_status"/>
+    </resultMap>
+    <insert id="insertFood" parameterType="Food">
+      insert into service_food(
+        <if test="sellerName!=null and sellerName!=''">seller_name,</if>
+        <if test="foodImg!=null and foodImg!=''">food_img,</if>
+        <if test="foodName!=null and foodName!=''">food_name,</if>
+        <if test="foodPrice!=null and foodPrice!=''">food_price,</if>
+        <if test="foodStatus!=null">food_status</if>
+      )values(
+        <if test="sellerName!=null and sellerName!=''">#{sellerName},</if>
+        <if test="foodImg!=null and foodImg!=''">#{foodImg},</if>
+        <if test="foodName!=null and foodName!=''">#{foodName},</if>
+        <if test="foodPrice!=null and foodPrice!=''">#{foodPrice},</if>
+        <if test="foodStatus!=null">#{foodStatus}</if>
+      )
+    </insert>
+    <sql id="selectFood">
+        select seller_name,food_img,food_name,food_price,food_status from service_food
+    </sql>
+    <select id="getFoodsBySellerName" parameterType="String" resultMap="FoodResult">
+        <include refid="selectFood"/>
+        where seller_name=#{sellerName}
+    </select>
+    <select id="getFoodByFoodName" parameterType="String" resultMap="FoodResult">
+        <include refid="selectFood"/>
+        where food_name=#{foodName}
+    </select>
+</mapper>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>狗狗外卖 - 用户注册</title>
+    <meta name="keywords" content="狗狗外卖"/>
+    <meta name="description" content="dogdog"/>
+    <link href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.css" th:href="@{css/font-awesome.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link href="../static/demo/css/demo.css" th:href="@{/demo/css/demo.css}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../static/dog.ico" th:href="@{dog.ico}"/>
+    <style type="text/css">label.error { position:inherit;  }</style>
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+</head>
+<body class="gray-bg" >
+<div class="signinpanel">
+    <div class="row" style="margin-top: 5%">
+        <div class="col-sm-5 registe-body" style="text-align: center">
+            <img src="../static/dog.ico" th:src="@{/dog.ico}"/>
+            <span style="color: #1E0FBE;font-size:medium">用户注册</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5%">
+        <div class="clo-sm-3 registe-body">
+            <form id="userAddForm" enctype="multipart/form-data">
+                <span class="registe-name">登录名称</span>
+                <input type="text" class="registe-text" name="loginName" id="loginName" onblur="check(this.id)" />
+                <span id="loginNameCheck"></span>
+                <br/>
+                <span class="registe-name">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
+                <input type="password" class="registe-text" name="password" /><br/>
+                <span class="registe-name">密码确认</span>
+                <input type="password" class="registe-text" name="passwordAgain" onblur="passwordCheck()"/>
+                <span id="passwordCheck"></span>
+                <br/>
+                <span class="registe-name">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</span>
+                <input type="text"     class="registe-text" name="userName" id="userName" onblur="check(this.id)" />
+                <span id="userNameCheck"></span>
+                <br/>
+                <span class="registe-name">手机号码</span>
+                <input type="text"     class="registe-text" name="phoneNumber" id="phoneNumber" onblur="check(this.id)" />
+                <span id="phoneNumberCheck"></span>
+                <br/>
+                <span class="registe-name">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+                <input type="text"     class="registe-text" name="email" id="email" onblur="check(this.id)" />
+                <span id="emailCheck"></span>
+                <br/>
+                <span class="registe-name">用户头像</span>
+                <input type="file"  class="registe-text"  id="file" name="file"/>
+                <br/>
+            </form>
+            <button  id="btnSubmit"  class="registe-btn" >注册</button>
+        </div>
+    </div>
+</div>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/ajax/libs/validate/jquery.validate.min.js" th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
+<script src="../static/ajax/libs/validate/messages_zh.min.js" th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
+<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script src="../static/ajax/libs/iCheck/icheck.min.js" th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+<script src="http://tajs.qq.com/stats?sId=62048022"></script>
+<script src="../static/demo/js/ry-ui.min.js" th:src="@{/demo/js/ry-ui.min.js?v=2.3.0}"></script>
+<script src="../static/demo/registe.js" th:src="@{/demo/registe.js}"></script>
+</body>
+</html>
